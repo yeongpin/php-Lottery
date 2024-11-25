@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /lottery/
+
+# 如果请求的不是实际文件或目录
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# 将请求重定向到 index.php
+RewriteRule ^(.*)$ index.php [QSA,L] 

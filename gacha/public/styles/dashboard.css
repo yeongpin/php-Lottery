@@ -1,0 +1,2189 @@
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --text-color: #000000;
+    --background-color: #f7f9fc;
+    --error-color: #ff4444;
+    --success-color: #4CAF50;
+    
+    /* 稀有度顏色 */
+    --common-color: #9e9e9e;
+    --rare-color: #2196F3;
+    --epic-color: #9c27b0;
+    --legendary-color: #ffd700;
+    --mythical-color: #ff4081;
+}
+
+:root[class="dark-mode"]{
+    --text-color: #c5dff9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft JhengHei', 'Noto Sans SC', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard-header {
+    background: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.token-display {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.claim-btn {
+    padding: 10px 20px;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.claim-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.gacha-container {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gacha-machine-wrapper {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    transition: transform 0.3s ease;
+}
+
+.gacha-icon {
+    font-size: 4em;
+}
+
+.gacha-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0;
+}
+
+.pull-btn {
+    flex: 0 1 200px;
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    background: white;
+    border: 2px solid var(--primary-color);
+}
+
+.pull-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cost {
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+.history-container {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.result-item {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    color: var(--text-color);
+}
+
+.result-item .item-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.result-item .item-type {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    color: white;
+}
+
+.result-item.legendary {
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.2));
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.result-item.epic {
+    background: linear-gradient(45deg, rgba(147, 112, 219, 0.1), rgba(147, 112, 219, 0.2));
+    border: 1px solid rgba(147, 112, 219, 0.3);
+}
+
+.result-item.rare {
+    background: linear-gradient(45deg, rgba(65, 105, 225, 0.1), rgba(65, 105, 225, 0.2));
+    border: 1px solid rgba(65, 105, 225, 0.3);
+}
+
+.result-item.common {
+    background: linear-gradient(45deg, rgba(169, 169, 169, 0.1), rgba(169, 169, 169, 0.2));
+    border: 1px solid rgba(169, 169, 169, 0.3);
+}
+
+.item-type {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    color: white;
+}
+
+.common .item-type { background-color: var(--common-color); }
+.rare .item-type { background-color: var(--rare-color); }
+.epic .item-type { background-color: var(--epic-color); }
+.legendary .item-type { background-color: var(--legendary-color); }
+.mythical .item-type { background-color: var(--mythical-color); }
+
+.logout-btn {
+    padding: 8px 16px;
+    background: var(--error-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.5em;
+        text-align: center;
+        margin: 0;
+    }
+
+    .user-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .token-display {
+        width: 100%;
+        justify-content: center;
+        padding: 8px 15px;
+        max-width: 200px;
+    }
+
+    .task-btn,
+    .claim-btn,
+    .logout-btn {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+        margin: 5px 0;
+        padding: 10px 15px;
+    }
+
+    .claim-form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .claim-form .claim-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    /* 調整按鈕內的圖標和文字對齊 */
+    .task-btn .btn-icon {
+        margin-right: 8px;
+    }
+
+    /* 確保所有按鈕的高度一致 */
+    .task-btn,
+    .claim-btn,
+    .logout-btn,
+    .token-display {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 調整代幣顯示的樣式 */
+    .token-display {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+    }
+
+    .token-display .token-icon {
+        margin-right: 8px;
+    }
+
+    .recharge-btn {
+        margin-left: 8px;
+    }
+
+    /* 調整間距 */
+    .dashboard-container {
+        padding: 10px;
+    }
+
+    /* 確保文字不會溢出 */
+    .token-count,
+    .task-btn span,
+    .claim-btn span,
+    .logout-btn {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* 更小螢幕的優化 */
+@media (max-width: 480px) {
+    .dashboard-header h1 {
+        font-size: 1.2em;
+    }
+
+    .task-btn,
+    .claim-btn,
+    .logout-btn,
+    .token-display {
+        font-size: 0.9em;
+        padding: 8px 12px;
+    }
+
+    .token-display {
+        max-width: 180px;
+    }
+}
+
+/* 添加物品欄樣式 */
+.inventory-container {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
+
+.inventory-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.inventory-item:hover {
+    transform: translateY(-3px);
+}
+
+.inventory-item.legendary {
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.2));
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.inventory-item.epic {
+    background: linear-gradient(45deg, rgba(147, 112, 219, 0.1), rgba(147, 112, 219, 0.2));
+    border: 1px solid rgba(147, 112, 219, 0.3);
+}
+
+.inventory-item.rare {
+    background: linear-gradient(45deg, rgba(65, 105, 225, 0.1), rgba(65, 105, 225, 0.2));
+    border: 1px solid rgba(65, 105, 225, 0.3);
+}
+
+.inventory-item.common {
+    background: linear-gradient(45deg, rgba(169, 169, 169, 0.1), rgba(169, 169, 169, 0.2));
+    border: 1px solid rgba(169, 169, 169, 0.3);
+}
+
+.item-icon {
+    font-size: 2em;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.item-name {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.item-category {
+    font-size: 0.8em;
+    padding: 4px 12px;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    margin: 5px auto;
+}
+
+.item-count {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.legendary .item-category { 
+    background-color: var(--legendary-color);
+    box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+.epic .item-category { 
+    background-color: var(--epic-color);
+    box-shadow: 0 2px 4px rgba(156, 39, 176, 0.3);
+}
+
+.rare .item-category { 
+    background-color: var(--rare-color);
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+}
+
+.common .item-category { 
+    background-color: var(--common-color);
+    box-shadow: 0 2px 4px rgba(158, 158, 158, 0.3);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .inventory-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+/* 功能按鈕樣式 */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.action-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-icon {
+    font-size: 1.2em;
+}
+
+/* 修改彈窗樣式 */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 1000;
+}
+
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+/* 動畫樣式 */
+.gacha-animation {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.spinning-icon {
+    font-size: 4em;
+    margin-bottom: 15px;
+}
+
+/* 結果標題樣式 */
+.gacha-results h2 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .gacha-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pull-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .action-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* 修改抽獎記錄區域的樣式 */
+.gacha-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none; /* 改為 flex 時會顯示 */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.gacha-history {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 0.3s ease;
+}
+
+.gacha-history-header {
+    padding: 20px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gacha-history-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.gacha-history-list {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    max-height: calc(80vh - 80px); /* 減去header高度 */
+}
+
+/* 修改抽獎記錄物品樣式 */
+.history-item {
+    padding: 12px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: 1fr 120px 180px; /* 三列固定寬度 */
+    gap: 10px;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.history-item-name {
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: left;
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-item-category {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    justify-self: center; /* 置中對齊 */
+}
+
+.history-item-time {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: right;
+    padding-right: 10px;
+}
+
+/* 不同稀有度的邊框和背景樣式 */
+.history-item.LEGENDARY {
+    border: 2px solid var(--legendary-color);
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.2));
+}
+
+.history-item.EPIC {
+    border: 2px solid var(--epic-color);
+    background: linear-gradient(45deg, rgba(156, 39, 176, 0.1), rgba(156, 39, 176, 0.2));
+}
+
+.history-item.RARE {
+    border: 2px solid var(--rare-color);
+    background: linear-gradient(45deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.2));
+}
+
+.history-item.COMMON {
+    border: 2px solid var(--common-color);
+    background: linear-gradient(45deg, rgba(158, 158, 158, 0.1), rgba(158, 158, 158, 0.2));
+}
+
+/* 不同稀有度的類別標籤背景色 */
+.LEGENDARY .history-item-category {
+    background-color: var(--legendary-color);
+    box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+.EPIC .history-item-category {
+    background-color: var(--epic-color);
+    box-shadow: 0 2px 4px rgba(156, 39, 176, 0.3);
+}
+
+.RARE .history-item-category {
+    background-color: var(--rare-color);
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+}
+
+.COMMON .history-item-category {
+    background-color: var(--common-color);
+    box-shadow: 0 2px 4px rgba(158, 158, 158, 0.3);
+}
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+    .history-item {
+        grid-template-columns: 1fr 100px; /* 在小螢幕上改為兩列 */
+        grid-template-rows: auto auto; /* 時間移到第二行 */
+    }
+
+    .history-item-time {
+        grid-column: 1 / -1; /* 時間占據整行 */
+        text-align: left;
+        padding-left: 10px;
+    }
+}
+
+/* 統一所有按鈕的鼠標樣式 */
+button,
+.pull-btn,
+.action-btn,
+.claim-btn,
+.logout-btn,
+.close-btn,
+.inventory-item {
+    cursor: pointer !important;
+}
+
+/* 禁用狀態的按鈕 */
+button:disabled,
+.pull-btn:disabled,
+.claim-btn:disabled {
+    cursor: not-allowed !important;
+}
+
+/* 添加主題切換按鈕樣式 */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 深色模式樣式 */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-mode .gacha-container,
+.dark-mode .inventory-container,
+.dark-mode .history-container {
+    background: #2d2d2d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .dashboard-header {
+    background: linear-gradient(120deg, #2c3e50 0%, #3498db 100%);
+}
+
+.dark-mode .theme-toggle {
+    background: #2d2d2d;
+    color: #ffffff;
+}
+
+.dark-mode .pull-btn {
+    background: #2d2d2d;
+    border-color: #3498db;
+    color: #ffffff;
+}
+
+.dark-mode .action-btn {
+    background: #2d2d2d;
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .inventory-item,
+.dark-mode .history-item {
+    background: #2d2d2d;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .inventory-item:hover,
+.dark-mode .history-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .popup-content {
+    background: #2d2d2d;
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .close-btn {
+    background: #3d3d3d;
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .close-btn:hover {
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
+}
+
+/* 深色模式下的文字顏色修改 */
+.dark-mode .inventory-item .item-name,
+.dark-mode .history-item-name,
+.dark-mode .history-item-time {
+    color: #ffffff !important;
+}
+
+.dark-mode .item-count {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark-mode .history-item-time {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 修改彈窗中的文字顏色 */
+.dark-mode .popup-content h3,
+.dark-mode .popup-content .item-name {
+    color: #ffffff !important;
+}
+
+/* 確保所有深色模式下的文字都清晰可見 */
+.dark-mode .inventory-item,
+.dark-mode .history-item {
+    color: #ffffff;
+}
+
+/* 修改標字顏色 */
+.history-item-category,
+.item-category {
+    color: white !important;  /* 確保文字在亮暗模式下都是白色 */
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);  /* 添加文字陰影提高可讀性 */
+}
+
+/* 修改滾動條樣式 */
+.gacha-history-list::-webkit-scrollbar {
+    width: 10px;  /* 稍微加寬 */
+}
+
+.gacha-history-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);  /* 淺灰色軌道 */
+    border-radius: 5px;
+    margin: 5px;  /* 添加邊距 */
+}
+
+.gacha-history-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));  /* 漸變色 */
+    border-radius: 5px;
+    border: 2px solid transparent;  /* 添加透明邊框 */
+    background-clip: padding-box;  /* 確保背景不會超出邊框 */
+    min-height: 50px;  /* 最小高度 */
+}
+
+.gacha-history-list::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));  /* 懸停時反轉漸變 */
+}
+
+/* 深色模式下的動條樣式 */
+.dark-mode .gacha-history-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .gacha-history-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+}
+
+.dark-mode .gacha-history-list::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+}
+
+/* Firefox 的滾動條樣式 */
+.gacha-history-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
+}
+
+/* 修改任務系統樣式 */
+.tasks-container {
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;  /* 限制最大寬度 */
+    margin: 0 auto;    /* 置中 */
+    height: 500px;     /* 固定高度 */
+    display: flex;
+    flex-direction: column;
+}
+
+.task-tabs {
+    display: flex;
+    justify-content: center;  /* 置中對齊 */
+    gap: 10px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 5px;
+    border-radius: 10px;
+    width: fit-content;  /* 根據內容調整寬度 */
+    margin-left: auto;   /* 水平置中 */
+    margin-right: auto;
+}
+
+.task-tab {
+    padding: 10px 30px;  /* 增加水平內邊距 */
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;    /* 設置最小寬度 */
+    text-align: center;  /* 文字置中 */
+}
+
+/* 修改 active 樣式 */
+.task-tab.active {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.task-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 10px;
+    margin-top: 20px;
+    height: calc(100% - 80px); /* 減去 tabs 的高度 */
+}
+
+/* 任務項目樣式 */
+.task-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+/* 只保留按鈕的 hover 效果 */
+.task-item button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.task-item button:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.task-item button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.task-info {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.task-info h4 {
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.task-info p {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.task-reward {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9em;
+    display: inline-block;
+    padding: 4px 8px;
+    background: rgba(var(--primary-color-rgb), 0.1);
+    border-radius: 4px;
+}
+
+/* 修改任務按鈕樣式 */
+.task-item button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* 確保文字置中 */
+    font-weight: 500;
+}
+
+.task-item button:hover {
+    background: var(--accent-color);  /* hover 時變為強調色 */
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.task-item button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 深色模式樣式 */
+.dark-mode .task-item {
+    background: #2d2d2d;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .task-info h4 {
+    color: white;
+}
+
+.dark-mode .task-info p {
+    color: #aaa;
+}
+
+.dark-mode .task-reward {
+    color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 深色模式樣式 */
+.dark-mode .task-tabs {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .task-tab {
+    color: white;
+}
+
+.dark-mode .task-item {
+    background: #2d2d2d;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .task-info h4 {
+    color: white;
+}
+
+.dark-mode .task-info p {
+    color: #aaa;
+}
+
+.dark-mode .task-reward {
+    color: var(--accent-color);
+}
+
+/* 美化任務按鈕樣式 */
+.task-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.task-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.task-btn .btn-icon {
+    font-size: 1.2em;
+}
+
+/* 深色模式樣式 */
+.dark-mode .task-btn {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .task-btn:hover {
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* 確保按鈕在 header 中對齊 */
+.user-info .task-btn {
+    margin: 0 10px;
+}
+
+/* 修改品欄和抽獎記錄的容器樣式 */
+.inventory-grid,
+.gacha-history-list {
+    max-height: calc(80vh - 200px);  /* 統一高度 */
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* 物品欄網格布局 */
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+/* 統一滾動條樣式 */
+.inventory-grid::-webkit-scrollbar,
+.gacha-history-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.inventory-grid::-webkit-scrollbar-track,
+.gacha-history-list::-webkit-scrollbar-track {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.inventory-grid::-webkit-scrollbar-thumb,
+.gacha-history-list::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
+}
+
+/* Firefox 的滾動條樣式 */
+.inventory-grid,
+.gacha-history-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--border-color);
+}
+
+/* 深色模式下的滾動條樣式 */
+.dark-mode .inventory-grid::-webkit-scrollbar-track,
+.dark-mode .gacha-history-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .inventory-grid::-webkit-scrollbar-thumb,
+.dark-mode .gacha-history-list::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+}
+
+/* 物品卡片樣式 */
+.inventory-item {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 深色模式下的物品卡片樣式 */
+.dark-mode .inventory-item {
+    background: #2d2d2d;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .inventory-item:hover {
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
+}
+
+/* 修改抽獎結果的樣式 */
+.results-scroll {
+    max-height: calc(80vh - 200px);  /* 減小高度 */
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+/* 統一滾動條樣式 */
+.results-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.results-scroll::-webkit-scrollbar-track {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.results-scroll::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
+}
+
+/* Firefox 的滾動條樣式 */
+.results-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--border-color);
+}
+
+/* 確保快速抽獎按鈕固定在底部 */
+.quick-gacha-buttons {
+    position: sticky;
+    bottom: 0;
+    background: white;  /* 或者與彈窗背景色一致 */
+    padding: 15px 0;
+    margin-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* 深色模式樣式 */
+.dark-mode .quick-gacha-buttons {
+    background: #2d2d2d;
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.quick-gacha-buttons .gacha-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.quick-gacha-buttons .gacha-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);  /* 更淡的陰影 */
+}
+
+/* 深色模式樣式 */
+.dark-mode .quick-gacha-buttons {
+    background: #2d2d2d;
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .gacha-popup-content {
+    background: #2d2d2d;
+}
+
+.dark-mode .gacha-popup-content h3,
+.dark-mode .gacha-popup-content .item-name,
+.dark-mode .gacha-popup-content .item-category {
+    color: white !important;  /* 確保文字在深色模式下是白色 */
+}
+
+.dark-mode .quick-gacha-buttons .gacha-btn {
+    background: var(--accent-color);
+}
+
+.dark-mode .quick-gacha-buttons .gacha-btn:hover {
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);  /* 更淡的陰影 */
+}
+
+.dark-mode .quick-gacha-buttons .gacha-btn:disabled {
+    background: #444;
+}
+
+/* 統一高度 */
+.inventory-grid,
+.gacha-history-list,
+.results-scroll {
+    max-height: calc(80vh - 200px);  /* 統一高度 */
+    overflow-y: auto;
+    padding: 10px;
+}
+
+
+
+.gacha-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.gacha-animation {
+    margin-bottom: 20px;
+}
+
+.spinning-icon {
+    font-size: 4em;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.close-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.result-item {
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.inventory-modal {
+    width: 80%;
+}
+
+.history-modal {
+    width: 80%;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.inventory-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.item-icon {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.item-details {
+    text-align: center;
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+.item-category {
+    color: #666;
+}
+
+.item-count {
+    color: #333;
+}
+
+.history-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.history-time {
+    color: #666;
+}
+
+.history-details {
+    color: #333;
+}
+
+.token-display {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.recharge-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.recharge-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.recharge-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.recharge-item {
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.recharge-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.recharge-item .amount {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.recharge-item .price {
+    margin-top: 5px;
+    color: #666;
+}
+
+.recharge-item .bonus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent-color);
+    color: white;
+    padding: 3px 8px;
+    font-size: 0.8em;
+    border-radius: 0 8px 0 8px;
+}
+
+/* 深色模式樣式 */
+.dark-mode .recharge-item {
+    background: #2d2d2d;
+    border-color: var(--accent-color);
+}
+
+.dark-mode .recharge-item .amount {
+    color: white;
+}
+
+.dark-mode .recharge-item .price {
+    color: #aaa;
+}
+
+.quick-gacha-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.quick-gacha-buttons .gacha-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.quick-gacha-buttons .gacha-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.quick-gacha-buttons .gacha-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.quick-gacha-buttons .gacha-btn .cost {
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+/* 深色模式樣式 */
+.dark-mode .quick-gacha-buttons .gacha-btn {
+    background: var(--accent-color);
+}
+
+.dark-mode .quick-gacha-buttons .gacha-btn:disabled {
+    background: #444;
+}
+
+/* Prize pool styles */
+.prize-pool-content {
+    padding: 15px;
+}
+
+.prize-pool-content table {
+    width: 100%;
+    margin-top: 15px;
+}
+
+#showPrizePoolBtn {
+    margin: 10px 0;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Prize Pool Modal Styles */
+#prizePoolModal .modal-content {
+    background: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+#prizePoolModal .modal-header {
+    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 15px 15px 0 0;
+    padding: 20px;
+    border: none;
+}
+
+#prizePoolModal .modal-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#prizePoolModal .modal-body {
+    padding: 25px;
+}
+
+.prize-pool-content table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin-top: 10px;
+}
+
+.prize-pool-content th {
+    padding: 12px;
+    text-align: left;
+    color: var(--text-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.prize-pool-content td {
+    padding: 15px 12px;
+    border-radius: 8px;
+}
+
+/* 不同稀有度的行樣式 */
+.prize-pool-content tr.legendary td {
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.2));
+    border: 1px solid var(--legendary-color);
+}
+
+.prize-pool-content tr.epic td {
+    background: linear-gradient(45deg, rgba(156, 39, 176, 0.1), rgba(156, 39, 176, 0.2));
+    border: 1px solid var(--epic-color);
+}
+
+.prize-pool-content tr.rare td {
+    background: linear-gradient(45deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.2));
+    border: 1px solid var(--rare-color);
+}
+
+.prize-pool-content tr.common td {
+    background: linear-gradient(45deg, rgba(158, 158, 158, 0.1), rgba(158, 158, 158, 0.2));
+    border: 1px solid var(--common-color);
+}
+
+/* 查看獎池按鈕樣式 */
+#showPrizePoolBtn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 500;
+    margin: 20px auto;
+    display: block;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em;
+}
+
+#showPrizePoolBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+/* 獎池模態框樣式 */
+#prizePoolModal {
+    backdrop-filter: blur(5px);
+}
+
+#prizePoolModal .modal-content {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+#prizePoolModal .modal-header {
+    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 20px 25px;
+}
+
+#prizePoolModal .modal-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+}
+
+#prizePoolModal .btn-close {
+    color: white;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+#prizePoolModal .btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+#prizePoolModal .modal-body {
+    padding: 25px;
+}
+
+/* 獎池表格樣式 */
+.prize-pool-content {
+    padding: 10px;
+}
+
+.prize-pool-content table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin: 0;
+}
+
+.prize-pool-content th {
+    padding: 15px;
+    color: var(--text-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary-color);
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+}
+
+.prize-pool-content td {
+    padding: 20px 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* 稀有度行樣式 */
+.prize-pool-content tr.legendary td {
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.2));
+    border: 2px solid var(--legendary-color);
+}
+
+.prize-pool-content tr.epic td {
+    background: linear-gradient(45deg, rgba(156, 39, 176, 0.1), rgba(156, 39, 176, 0.2));
+    border: 2px solid var(--epic-color);
+}
+
+.prize-pool-content tr.rare td {
+    background: linear-gradient(45deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.2));
+    border: 2px solid var(--rare-color);
+}
+
+.prize-pool-content tr.common td {
+    background: linear-gradient(45deg, rgba(158, 158, 158, 0.1), rgba(158, 158, 158, 0.2));
+    border: 2px solid var(--common-color);
+}
+
+/* 行懸停效果 */
+.prize-pool-content tr:hover td {
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 概率列樣式 */
+.prize-pool-content td:nth-child(2) {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* 物品列表樣式 */
+.prize-pool-content td:nth-child(3) {
+    max-height: 100px; /* 限制高度 */
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* 物品列表容器 */
+.items-list {
+    max-height: 100px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* 每個物品項目的樣式 */
+.items-list span {
+    display: block;
+    padding: 4px 0;
+    white-space: nowrap;
+}
+
+/* 前三個物品項目固定顯示 */
+.items-list span:nth-child(-n+3) {
+    display: block;
+}
+
+/* 物品列的滾動條樣式 */
+.items-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.items-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+}
+
+.items-list::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* 深色模式下的滾動條樣式 */
+.dark-mode .items-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .items-list::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+}
+
+/* Firefox 的滾動條樣式 */
+.items-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+}
+
+/* 深色模式樣式 */
+.dark-mode #prizePoolModal .modal-content {
+    background: #2d2d2d;
+}
+
+.dark-mode #prizePoolModal .modal-header {
+    background: linear-gradient(120deg, #2c3e50, #3498db);
+}
+
+.dark-mode .prize-pool-content th {
+    color: white;
+    border-bottom-color: var(--accent-color);
+}
+
+.dark-mode .prize-pool-content td {
+    color: white;
+}
+
+.dark-mode .prize-pool-content td:nth-child(2) {
+    color: var(--accent-color);
+}
+
+.dark-mode .prize-pool-content td:nth-child(3) {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .prize-pool-content {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .prize-pool-content table {
+        min-width: 600px;
+    }
+    
+    #showPrizePoolBtn {
+        width: 90%;
+        max-width: 300px;
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    
+    #prizePoolModal .modal-header {
+        padding: 15px 20px;
+    }
+    
+    #prizePoolModal .modal-body {
+        padding: 15px;
+    }
+}
+
+/* 獎池模態框基本樣式 */
+.prize-pool-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.prize-pool-content {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.prize-pool-content .modal-header {
+    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prize-pool-content .modal-title {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.prize-pool-content .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.prize-pool-content .close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.prize-pool-content .modal-body {
+    padding: 25px;
+    overflow-y: auto;
+    max-height: calc(90vh - 70px);
+}
+
+.prize-pool-content table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.prize-pool-content th {
+    padding: 15px;
+    text-align: left;
+    color: var(--text-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.prize-pool-content td {
+    padding: 20px 15px;
+    border-radius: 10px;
+}
+
+/* 深色模式樣式 */
+.dark-mode .prize-pool-content {
+    background: #2d2d2d;
+    color: white;
+}
+
+.dark-mode .prize-pool-content th {
+    color: white;
+    border-bottom-color: var(--accent-color);
+}
+
+.dark-mode .prize-pool-content td {
+    color: white;
+}
+
+/* 神話稀有度的行樣式 */
+.prize-pool-content tr.mythical td {
+    background: linear-gradient(45deg, rgba(255, 64, 129, 0.1), rgba(255, 64, 129, 0.2));
+    border: 2px solid var(--mythical-color);
+}
+
+/* 神話稀有度的物品樣式 */
+.mythical .item-type,
+.mythical .history-item-category,
+.mythical .item-category { 
+    background-color: var(--mythical-color);
+    box-shadow: 0 2px 4px rgba(255, 64, 129, 0.3);
+}
+
+/* 神話稀有度的物品卡片樣式 */
+.inventory-item.mythical {
+    background: linear-gradient(45deg, rgba(255, 64, 129, 0.1), rgba(255, 64, 129, 0.2));
+    border: 2px solid var(--mythical-color);
+}
+
+/* 神話稀有度的歷史記錄樣式 */
+.history-item.mythical {
+    background: linear-gradient(45deg, rgba(255, 64, 129, 0.1), rgba(255, 64, 129, 0.2));
+    border: 2px solid var(--mythical-color);
+}
+
+/* 深色模式下的神話稀有度樣式 */
+.dark-mode .prize-pool-content tr.mythical td {
+    background: linear-gradient(45deg, rgba(255, 64, 129, 0.2), rgba(255, 64, 129, 0.3));
+}
+
+/* 語言切換按鈕樣式 */
+.language-toggle {
+    position: fixed;
+    bottom: 80px; /* 在主題切換按鈕上方 */
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.language-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 深色模式樣式 */
+.dark-mode .language-toggle {
+    background: #2d2d2d;
+    color: white;
+}
+
+/* 修改任务完成弹窗样式 */
+.task-completed-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;  /* 亮色模式背景 */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    z-index: 1000;
+    min-width: 300px;
+}
+
+/* 深色模式下的弹窗样式 */
+.dark-mode .task-completed-popup {
+    background: #1a1a1a;  /* 更深的背景色 */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* 弹窗标题样式 */
+.task-completed-popup h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+/* 深色模式下的标题样式 */
+.dark-mode .task-completed-popup h3 {
+    color: #fff;  /* 白色文字 */
+}
+
+/* 弹窗文本样式 */
+.task-completed-popup p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+/* 深色模式下的文本样式 */
+.dark-mode .task-completed-popup p {
+    color: #fff;  /* 白色文字 */
+}
+
+/* 确认按钮样式 */
+.task-completed-popup confirm-btn {
+    padding: 12px 30px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    background: var(--accent-color);
+}
+
+/* 深色模式样式 */
+.dark-mode .confirm-btn {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .confirm-btn:hover {
+    background: var(--accent-color);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}

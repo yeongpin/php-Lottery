@@ -1,0 +1,510 @@
+:root {
+    --primary-color: #4a6ee0;
+    --secondary-color: #6e8efb;
+    --accent-color: #45d3d3;
+    --danger-color: #ff6b6b;
+    --success-color: #4ecdc4;
+    --background-color: #f7f9fc;
+    --text-color: #2c3e50;
+    --border-color: #e1e8ef;
+    --header-bg: linear-gradient(135deg, #4a6ee0 0%, #6e8efb 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.admin-header {
+    background: var(--header-bg);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.admin-header h1 {
+    color: white;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-section {
+    flex: 1;
+    max-width: 400px;
+}
+
+.login-form {
+    display: flex;
+    gap: 10px;
+}
+
+.input-group {
+    position: relative;
+    flex: 1;
+}
+
+.input-group i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 12px 12px 12px 35px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(69, 211, 211, 0.2);
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #3bc1c1;
+    transform: translateY(-2px);
+}
+
+/* Dashboard Stats */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card i {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.stat-card h3 {
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Item Management */
+.item-management {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+}
+
+select {
+    padding: 10px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.item-list {
+    margin: 20px 0;
+    display: grid;
+    gap: 10px;
+}
+
+.item-entry {
+    background: var(--background-color);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.item-entry:hover {
+    transform: translateX(5px);
+}
+
+.item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.item-actions button {
+    padding: 8px 16px;
+}
+
+.item-actions button.edit-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.item-actions button.delete-btn {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.add-item-form {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-color);
+}
+
+.add-item-form h3 {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-item-form .input-group {
+    display: flex;
+    gap: 10px;
+}
+
+#add-item-btn {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .login-form {
+        flex-direction: column;
+    }
+
+    .section-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .add-item-form .input-group {
+        flex-direction: column;
+    }
+}
+
+.category-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.probability-setting {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.probability-setting input,
+.probability-input input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.probability-input {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.item-entry {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+}
+
+.item-probability {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.item-probability input {
+    width: 80px;
+    padding: 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.probability-label {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.9em;
+}
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.admin-header {
+    width: 100%;
+    max-width: 500px;
+    transition: all 0.5s ease;
+}
+
+.admin-header.centered .header-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.admin-header.centered h1 {
+    margin-bottom: 20px;
+}
+
+.admin-header.top {
+    max-width: 100%;
+    margin: 0;
+    padding: 15px 30px;
+}
+
+.admin-header.top .header-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-header.top h1 {
+    margin-bottom: 0;
+    font-size: 1.5em;
+}
+
+.admin-header.top .auth-section {
+    max-width: none;
+}
+
+.admin-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    margin-top: 20px;
+}
+
+.admin-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 动画效果 */
+@keyframes slideUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease forwards;
+}
+
+.slide-down {
+    animation: slideDown 0.5s ease forwards;
+}
+
+/* 修改圖表容器和圖表大小 */
+.chart-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    max-height: calc(80vh - 140px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 修改圖表大小 */
+.chart-container canvas {
+    width: 300px !important;  /* 改小圓餅圖的寬度 */
+    height: 300px !important; /* 改小圓餅圖的高度 */
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* 確保彈窗內容置中 */
+.statistics-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 修改詳細數據表格樣式 */
+.detailed-stats table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.detailed-stats th,
+.detailed-stats td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.detailed-stats th {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.detailed-stats tr:last-child td {
+    border-bottom: none;
+}
+
+.detailed-stats tr:hover td {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* 添加條紋效果 */
+.detailed-stats tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* 添加列邊框 */
+.detailed-stats td {
+    border-right: 1px solid #eee;
+}
+
+.detailed-stats td:last-child {
+    border-right: none;
+}
+
+/* 強調數字列 */
+.detailed-stats td:nth-child(2),
+.detailed-stats td:nth-child(3) {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* 類別名稱列樣式 */
+.detailed-stats td:first-child {
+    font-weight: 500;
+    color: var(--text-color);
+} 
