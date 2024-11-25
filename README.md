@@ -157,6 +157,110 @@ gacha/
 
 ## 💻 代碼示例
 
+```javascript
+// 加載語言文件
+async function loadTranslations(lang) {
+    try {
+        const response = await fetch(`locale/${lang}.json`);
+        translations[lang] = await response.json();
+    } catch (error) {
+        console.error('Failed to load translations:', error);
+    }
+}
+
+// 切換語言
+async function toggleLanguage() {
+    const languageIcon = document.getElementById('language-icon');
+    const currentLang = localStorage.getItem('language') || 'en';
+    const newLang = currentLang === 'zh' ? 'en' : 'zh';
+    
+    if (!translations[newLang]) {
+        await loadTranslations(newLang);
+    }
+    
+    languageIcon.textContent = newLang === 'zh' ? '🇹🇼' : '🇺🇸';
+    localStorage.setItem('language', newLang);
+    changeLanguage(newLang);
+}
+
+// 應用翻譯
+function changeLanguage(lang) {
+    if (!translations[lang]) return;
+
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        let text = getNestedTranslation(translations[lang], key);
+        
+        if (text) {
+            if (key === 'consumeTokens') {
+                const tokens = element.getAttribute('data-tokens');
+                text = text.replace('{n}', tokens);
+            }
+            element.textContent = text;
+        }
+    });
+}
+```
+
+### HTML 使用示例
+```html
+<!-- 語言切換按鈕 -->
+<button class="language-toggle" onclick="toggleLanguage()" title="切換語言">
+    <span id="language-icon">🇺🇸</span>
+</button>
+
+<!-- 使用翻譯的元素 -->
+<h2 data-translate="welcome">歡迎</h2>
+<p data-translate="description">這是一段描述文字</p>
+```
+
+### 語言文件示例 (locale/zh.json)
+```json
+{
+    "welcome": "歡迎",
+    "description": "這是一段描述文字",
+    "consumeTokens": "消耗{n}代幣"
+}
+```
+
+### 語言文件示例 (locale/en.json)
+```json
+{
+    "welcome": "Welcome",
+    "description": "This is a description",
+    "consumeTokens": "Cost {n} Tokens"
+}
+```
+
+### CSS 樣式
+```css
+.language-toggle {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dark-mode .language-toggle {
+    background: #2d2d2d;
+    color: white;
+}
+```
+
+
+
 ### 任務完成提示樣式
 ```css
 /* 任務完成提示樣式 */
