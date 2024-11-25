@@ -88,7 +88,7 @@
 
 1. 克隆專案
 bash
-git clone https://github.com/your-username/gacha-system.git
+git clone https://github.com/yeongpin/php-Lottery.git
 
 
 2. 配置數據庫
