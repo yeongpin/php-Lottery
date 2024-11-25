@@ -86,62 +86,63 @@
 
 ## 🚀 安裝步驟
 
-1. 克隆專案
-bash
-git clone https://github.com/yeongpin/php-Lottery.git
+1. 克隆專案：
+   ```bash
+   git clone https://github.com/your-username/gacha-system.git
+   ```
 
+2. 配置數據庫：
+   ```sql
+   CREATE DATABASE gacha_system;
+   USE gacha_system;
+   SOURCE database.sql;
+   ```
 
-2. 配置數據庫
-sql
-CREATE DATABASE gacha_system;
-USE gacha_system;
-SOURCE database.sql;
+3. 配置環境變量：
+   ```bash
+   cp .env.example .env
+   ```
 
-
-3. 配置環境變量
-bash
-cp .env.example .env
-
-
-4. 設置權限
-bash
-chmod 755 -R public/
-chmod 644 -R config/
-
+4. 設置權限：
+   ```bash
+   chmod 755 -R public/
+   chmod 644 -R config/
+   ```
 
 ## 📝 配置說明
 
 ### 數據庫配置
-php
+```php
 // config/database.php
 return [
-'host' => 'localhost',
-'dbname' => 'gacha_system',
-'username' => 'your_username',
-'password' => 'your_password'
+    'host' => 'localhost',
+    'dbname' => 'gacha_system',
+    'username' => 'your_username',
+    'password' => 'your_password',
 ];
-
+```
 
 ### PayPal 配置
-env
+```env
 PAYPAL_CLIENT_ID=your_client_id
 PAYPAL_CLIENT_SECRET=your_client_secret
-PAYPAL_MODE=sandbox // or 'live' for production
-
+PAYPAL_MODE=sandbox # 或 'live' 用於生產環境
+```
 
 ## 🔧 開發指南
 
 ### 目錄結構
+```plaintext
 gacha/
-├── config/ # 配置文件
-├── models/ # 數據模型
-├── public/ # 公開訪問目錄
-│ ├── admin/ # 管理後台
-│ ├── styles/ # CSS 文件
-│ └── locale/ # 語言文件
-├── screenshots/ # 截圖
-└── README.md # 說明文檔
-
+├── config/        # 配置文件
+├── models/        # 數據模型
+├── public/        # 公開訪問目錄
+│   ├── admin/     # 管理後台
+│   ├── styles/    # CSS 文件
+│   └── locale/    # 語言文件
+├── screenshots/   # 截圖
+└── README.md      # 說明文檔
+```
 
 ### 開發規範
 - 遵循 PSR-4 自動加載規範
@@ -152,7 +153,72 @@ gacha/
 
 ## 📄 開源協議
 
-本項目採用 MIT 協議 - 查看 [LICENSE](LICENSE) 文件了解詳情
+本項目採用 MIT 協議 - 查看 [LICENSE](LICENSE) 文件了解詳情。
+
+## 💻 代碼示例
+
+### 任務完成提示樣式
+```css
+/* 任務完成提示樣式 */
+.task-completed-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a1a1a; /* 深色背景 */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 1000;
+    min-width: 300px;
+}
+.task-completed-popup h3 {
+    color: #fff; /* 白色文字 */
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.task-completed-popup p {
+    color: #fff; /* 白色文字 */
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+.confirm-btn {
+    padding: 12px 30px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.confirm-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    background: var(--accent-color);
+}
+```
+
+### 使用示例
+```php
+<div class="popup-content">
+    <h3 data-translate="taskCompleted">任務完成！</h3>
+    <p class="reward-text" data-translate="rewardText">獲得 ${data.reward_tokens} 代幣</p>
+    <button onclick="closeTaskPopupAndReload(this)" class="confirm-btn" data-translate="confirm">確定</button>
+</div>
+```
+
+## 🔄 更新日誌
+
+### v1.0.0 (2024-01-XX)
+- 初始版本發布
+- 實現基本功能
+- 整合支付系統
 
 ## 👥 貢獻指南
 
@@ -163,20 +229,12 @@ gacha/
 
 ## 🙏 致謝
 
-- Bootstrap
-- PayPal API
-- Animate.css
-- 所有貢獻者
+- [Bootstrap](https://getbootstrap.com/)
+- [PayPal API](https://developer.paypal.com/)
+- [Animate.css](https://animate.style/)
 
 ## 📱 聯繫方式
 
-- 作者：[您的名字]
-- 郵箱：[您的郵箱]
-- 網站：[您的網站]
-
-## 🔄 更新日誌
-
-### v1.0.0 (2024-01-XX)
-- 初始版本發布
-- 實現基本功能
-- 整合支付系統
+- **作者**：[您的名字]
+- **郵箱**：[您的郵箱]
+- **網站**：[URL]
