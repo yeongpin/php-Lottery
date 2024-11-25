@@ -6,18 +6,28 @@
 
 ### 用戶系統
 - 安全的用戶註冊和登入
+- ![image](https://github.com/user-attachments/assets/19e7a0d5-9c62-4372-943d-1340b4a79e7c)
+- ![image](https://github.com/user-attachments/assets/ca5f3da5-4afa-498d-be49-06f11629a71b)
 - 支持深色/淺色主題切換
+- ![image](https://github.com/user-attachments/assets/ddcbf0c4-b015-4b22-b5c8-9bb398f388d1)
 - 多語言支持（中文/英文）
 - 個人化儀表板
+- ![image](https://github.com/user-attachments/assets/7b6c5e36-e81d-4978-8e53-0719f69eb98b)
+- ![image](https://github.com/user-attachments/assets/99be3d9e-ee75-4608-899f-c393a34ad2f4)
 - 自動保存用戶偏好設置
 
 ### 抽獎系統
 - 多種抽獎選項（單抽/五連抽/十連抽）
 - 五種稀有度（神話/傳說/史詩/稀有/普通）
 - 動態抽獎動畫效果
+- ![recording](https://github.com/user-attachments/assets/be02e57b-8277-4b10-809d-0d5b300e45be)
 - 詳細的獎池資訊顯示
+- ![image](https://github.com/user-attachments/assets/87fccd21-af55-435b-9294-7ef6cf7ac573)
 - 抽獎歷史記錄
+- ![image](https://github.com/user-attachments/assets/d421b6ab-d6f9-436e-9ae6-f49d8cbe63f8)
 - 物品庫存管理
+- ![image](https://github.com/user-attachments/assets/a65e9b16-1a63-402f-9184-a80972918687)
+
 
 ### 任務系統
 - 每日任務
