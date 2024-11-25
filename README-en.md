@@ -88,7 +88,7 @@ A modern gacha system based on PHP and MySQL with complete user management, gach
 
 1. Clone the project:
    ```bash
-   git clone https://github.com/your-username/gacha-system.git
+   git clone [https://github.com/your-username/gacha-system.git](https://github.com/yeongpin/php-Lottery.git)
    ```
 
 2. Configure database:
